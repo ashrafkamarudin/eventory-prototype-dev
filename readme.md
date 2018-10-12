@@ -101,16 +101,16 @@ Reporting
 
 ## Scope of Work
 
-Discovery Phase
+- Discovery Phase
 	- Idea dump
 	- Creative brief
 	- Scope of work
-Design Phase
+- Design Phase
 	- Wireframes
 	- Design
 	- Touch Up/Revisions
 	- Database Architecture
-Development Phase
+- Development Phase
 	- Homepage
 	- Event Section
 	- Login
