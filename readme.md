@@ -115,9 +115,9 @@ Reporting
 	- Event Section
 	- Login
 	- Miscellaneous Pages
-		○ 404 page
-		○ 500 error
-		○ Contact pages
+		- 404 page
+		- 500 error
+		- Contact pages
 Deployment
 
 ### Pages
