@@ -1,0 +1,35 @@
+/* your styles go here */
+
+blockquote {
+  font-size: 1.05em;
+  line-height: 1.7em;
+  border-color: #999;
+  border: 1px solid #eee;
+  border-left: 6px solid #eee;
+  padding: 20px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  margin-bottom: 30px;
+}
+
+img.event-list {
+	height: 250px;
+}
+
+.card-body.tags .tag {
+  padding: 5px 25px;
+  border: 1px solid #ddd;
+  margin: 5px 0;
+  color: #777;
+  font-size: 0.75em;
+  text-transform: uppercase;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 50px;
+}
+
+.card-body.tags .tag:hover {
+  background: #999;
+  color: #fff;
+  border-color: #999;
+}
