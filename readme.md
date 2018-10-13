@@ -50,6 +50,7 @@
 		- [ ] sort event by start date, ascending
 - [ ] Post
 	- [x] view single event with slug
+		- [x] added comment
 	- [ ] view list of all event
 		- [ ] sort event by start date, ascending
 - [ ] About Us
