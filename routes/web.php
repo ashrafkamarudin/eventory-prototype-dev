@@ -17,6 +17,9 @@ Route::get('/', function () {
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+
+Route::resource('comments', 'CommentController');
+
 Auth::routes();
 
 Route::get('event/{slug}', ['as' => 'event.single', 'uses' => 'Admin\EventController@getSingle'])

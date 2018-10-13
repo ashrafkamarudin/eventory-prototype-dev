@@ -15,4 +15,9 @@ class Event extends Model
 	{
 	    return array('created_at', 'updated_at', 'start_at');
 	}
+
+	public function comments()
+    {
+    	return $this->hasMany('App\Comment');
+    }
 }

@@ -18,7 +18,7 @@
     <!-- Fancybox-->
     <link rel="stylesheet" href="{{ asset('bootstrap-blog/vendor/@fancyapps/fancybox/jquery.fancybox.min.css') }}">
     <!-- theme stylesheet-->
-    <link rel="stylesheet" href="{{ asset('bootstrap-blog/css/style.default.css') }}" id="theme-stylesheet">
+    <link rel="stylesheet" href="{{ asset('bootstrap-blog/css/style.pink.css') }}" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="{{ asset('bootstrap-blog/css/custom.css') }}">
     <!-- Favicon-->

@@ -1,5 +1,9 @@
 /* your styles go here */
 
+body {
+  background: #f8f9fa;
+}
+
 blockquote {
   font-size: 1.05em;
   line-height: 1.7em;
@@ -16,6 +20,8 @@ img.event-list {
 	height: 250px;
 }
 
+/* card */
+
 .card-body.tags .tag {
   padding: 5px 25px;
   border: 1px solid #ddd;
@@ -29,7 +35,25 @@ img.event-list {
 }
 
 .card-body.tags .tag:hover {
-  background: #999;
+  background: #ef5285;
   color: #fff;
-  border-color: #999;
+  border-color: #ef5285;
+}
+
+.blog-post .add-comment input.is-invalid, .blog-post .add-comment textarea.is-invalid {
+  border-bottom: 1px solid #dc3545;
+}
+
+/* footer */
+
+footer.main-footer {
+  background: #fff;
+  padding: 100px 0 0;
+  color: #000;
+}
+
+footer.main-footer .copyrights {
+  background: #fff;
+  padding: 20px 0;
+  font-size: 0.9em;
 }

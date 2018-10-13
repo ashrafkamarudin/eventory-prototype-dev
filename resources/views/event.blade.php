@@ -33,56 +33,42 @@
                   <header>
                     <h3 class="h6">Post Comments<span class="no-of-comments">(3)</span></h3>
                   </header>
-                  <div class="comment">
+                  @foreach($event->comments as $comment)
+                    <div class="comment">
                     <div class="comment-header d-flex justify-content-between">
                       <div class="user d-flex align-items-center">
                         <div class="image"><img src="{{ asset('bootstrap-blog/img/user.svg') }}" alt="..." class="img-fluid rounded-circle"></div>
-                        <div class="title"><strong>Jabi Hernandiz</strong><span class="date">May 2016</span></div>
+                        <div class="title"><strong>{{ $comment->name }}</strong><span class="date">{{ date('F nS, Y - g:iA' ,strtotime($comment->created_at)) }}</span></div>
                       </div>
                     </div>
                     <div class="comment-body">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                      <p>{{ $comment->comment }}</p>
                     </div>
                   </div>
-                  <div class="comment">
-                    <div class="comment-header d-flex justify-content-between">
-                      <div class="user d-flex align-items-center">
-                        <div class="image"><img src="{{ asset('bootstrap-blog/img/user.svg') }}" alt="..." class="img-fluid rounded-circle"></div>
-                        <div class="title"><strong>Nikolas</strong><span class="date">May 2016</span></div>
-                      </div>
-                    </div>
-                    <div class="comment-body">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-                    </div>
-                  </div>
-                  <div class="comment">
-                    <div class="comment-header d-flex justify-content-between">
-                      <div class="user d-flex align-items-center">
-                        <div class="image"><img src="{{ asset('bootstrap-blog/img/user.svg') }}" alt="..." class="img-fluid rounded-circle"></div>
-                        <div class="title"><strong>John Doe</strong><span class="date">May 2016</span></div>
-                      </div>
-                    </div>
-                    <div class="comment-body">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-                    </div>
-                  </div>
+                  @endforeach
                 </div>
                 <div class="add-comment">
                   <header>
                     <h3 class="h6">Leave a reply</h3>
                   </header>
-                  <form action="#" class="commenting-form">
-                    <div class="row">
+                  <form method="post" action="{{ url('comments') }}" class="commenting-form">
+                    @method('POST')
+                    @csrf
+                    <div class="form-row">
                       <div class="form-group col-md-6">
-                        <input type="text" name="username" id="username" placeholder="Name" class="form-control">
+                        <input type="text" name="name" id="username" placeholder="Name" class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}">
+                        <div class="error text-red">{{ $errors->first('name') }}</div>
                       </div>
                       <div class="form-group col-md-6">
-                        <input type="email" name="username" id="useremail" placeholder="Email Address (will not be published)" class="form-control">
+                        <input type="email" name="email" id="useremail" placeholder="Email Address (will not be published)" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}">
+                        <div class="error text-red">{{ $errors->first('email') }}</div>
                       </div>
                       <div class="form-group col-md-12">
-                        <textarea name="usercomment" id="usercomment" placeholder="Type your comment" class="form-control"></textarea>
+                        <textarea name="comment" id="usercomment" placeholder="Type your comment" class="form-control {{ $errors->has('comment') ? ' is-invalid' : '' }}"></textarea>
+                        <div class="error text-red">{{ $errors->first('comment') }}</div>
                       </div>
                       <div class="form-group col-md-12">
+                        <input type="hidden" name="event_id" value="{{ $event->id }}">
                         <button type="submit" class="btn btn-secondary">Submit Comment</button>
                       </div>
                     </div>
@@ -94,7 +80,7 @@
         </main>
         <aside class="col-lg-4">
           <!-- Widget [Search Bar Widget]-->
-          <div class="widget search">
+          <div class="widget search bg-white">
             <header>
               <h3 class="h6">Search the site</h3>
             </header>
@@ -106,7 +92,7 @@
             </form>
           </div>
           <!-- Widget [Latest Posts Widget]        -->
-          <div class="widget latest-posts">
+          <div class="widget latest-posts bg-white">
             <header>
               <h3 class="h6">Latest Posts</h3>
             </header>
@@ -124,7 +110,7 @@
              @endforeach </a></div>
           </div>
           <!-- Widget [Categories Widget]-->
-          <div class="widget categories">
+          <div class="widget categories bg-white">
             <header>
               <h3 class="h6">Categories</h3>
             </header>
@@ -135,7 +121,7 @@
             <div class="item d-flex justify-content-between"><a href="#">Local</a><span>25</span></div>
           </div>
           <!-- Widget [Tags Cloud Widget]-->
-          <div class="widget tags">       
+          <div class="widget tags bg-white">       
             <header>
               <h3 class="h6">Tags</h3>
             </header>

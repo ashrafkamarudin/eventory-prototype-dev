@@ -93,7 +93,7 @@
                     <li class="list-inline-item"><a href="#" class="tag">#Economy</a></li>
                   </ul>
                 <hr>
-                <a href="">Read more</a>
+                <a href=" {{ url('event/' . $event->slug) }} ">Read more</a>
                 <div class="d-flex pull-right">
                       <div class="views"><i class="icon-eye"></i> 500</div>
                       <div class="comments"><i class="icon-comment"></i>12</div>
@@ -105,7 +105,7 @@
         </main>
         <aside class="col-lg-4">
           <!-- Widget [Categories Widget]-->
-          <div class="widget categories">
+          <div class="widget categories bg-white">
             <header>
               <h3 class="h6">Categories</h3>
             </header>
@@ -116,7 +116,7 @@
             <div class="item d-flex justify-content-between"><a href="#">Local</a><span>25</span></div>
           </div>
           <!-- Widget [Tags Cloud Widget]-->
-          <div class="widget tags">       
+          <div class="widget tags bg-white">       
             <header>
               <h3 class="h6">Tags</h3>
             </header>

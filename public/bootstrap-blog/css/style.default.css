@@ -596,12 +596,12 @@ div[class*="-btn"] {
 }
 
 .navbar .navbar-nav a.nav-link:hover {
-  color: #20c997;
+  color: #999;
 }
 
 .navbar .navbar-nav a.nav-link.active {
-  color: #20c997;
-  border-bottom: solid;
+  color: #999;
+  font-weight: bold;
 }
 
 /* Navbar Media Query ------------------------------------- */
@@ -1052,9 +1052,9 @@ section.gallery .overlay i {
 * ==========================================================
 */
 footer.main-footer {
-  background: #f8f9fa;
+  background: #0e0e0e;
   padding: 100px 0 0;
-  color: #000;
+  color: #fff;
 }
 
 footer.main-footer .contact-details p {
@@ -1113,7 +1113,8 @@ footer.main-footer .latest-posts .date {
 }
 
 footer.main-footer .copyrights {
-  background: #f8f9fa;
+  background: #090909;
+  margin-top: 100px;
   padding: 20px 0;
   font-size: 0.9em;
 }
