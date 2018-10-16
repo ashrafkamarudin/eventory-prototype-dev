@@ -34,9 +34,4 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Event');
     }
-
-    public function roles($value='')
-    {
-        return $this->hasMany('App\Role');
-    }
 }
