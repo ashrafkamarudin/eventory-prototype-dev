@@ -4,8 +4,14 @@
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Events</h1>
+                <div class="col-sm-6 col-md-11">
+                    <h1 class="m-0 text-dark">
+                        Events
+
+                        @permission('create-events')
+                        <a href="{{ url('events/create') }}" class="btn btn-outline-primary pull-right">Add New</a>
+                        @endpermission
+                    </h1>
                 </div>
             </div>
         </div>
@@ -14,7 +20,7 @@
     <section class="content">
 
         <div class="row">
-            <div class="col-12">
+            <div class="col-11">
 
                 @if (session('message'))
                     <div class="callout callout-success alert-dismissible">
@@ -23,16 +29,7 @@
                     </div>
                 @endif
 
-                <div class="card card-primary card-outline"">
-                    <div class="card-header">
-
-                        @permission('create-events')
-                        <a href="{{ url('events/create') }}" class="btn btn-outline-primary">Add New</a>
-                        @endpermission
-
-                        <div class="card-tools">
-                        </div>
-                    </div>
+                <div class="card">
                     <!-- /.card-header -->
                     <div class="card-body">
                         <table id="event" class="table table-hover">
@@ -77,8 +74,6 @@
                         </table>
                     </div>
                     <!-- /.card-body -->
-                    <div class="card-footer">
-                    </div>
                 </div>
                 <!-- /.card -->
             </div>
