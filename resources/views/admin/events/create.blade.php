@@ -123,3 +123,7 @@
     </section>
 
 @endsection
+
+@section('script')
+    @include('admin.partials.ckejs')
+@endsection

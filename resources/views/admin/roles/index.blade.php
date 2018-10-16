@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Events</h1>
+                    <h1 class="m-0 text-dark">Roles</h1>
                 </div>
             </div>
         </div>
@@ -14,7 +14,7 @@
     <section class="content">
 
         <div class="row">
-            <div class="col-md-11 card-columns">
+            <div class="col-md-6 card-columns">
 
                 @if (session('message'))
                     <div class="callout callout-success alert-dismissible">
@@ -24,16 +24,18 @@
                 @endif
 
                 @foreach ($roles as $role)
-
                 
                   <div class="card">
                     <div class="card-body">
                       <h5 class="card-title">{{ $role->display_name }}</h5>
+                      <h5 style="margin-bottom: 20px"><i>{{ $role->name }}</i></h5>
                       <p class="card-text">
-                          Role Name : {{ $role->name }}
-                          Role Description : {{ $role->description }}
+                          {{ $role->description }}
                       </p>
-                      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                      <div>
+                        <a href="" class="btn btn-primary">Edit</a>
+                        <a href="" class="btn btn-default">Delete</a>
+                      </div>
                     </div>
                   </div>
 

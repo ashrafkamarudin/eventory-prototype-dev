@@ -1,78 +1,75 @@
-@extends('layouts.admin')
+@extends('layouts.admin') 
 @section('content')
 
-    <div class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Permissions</h1>
-                </div>
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">Permissions</h1>
             </div>
         </div>
     </div>
-
-    <section class="content">
-
-        <div class="row">
-            <div class="col-12">
-
-                @if (session('message'))
-                    <div class="callout callout-success alert-dismissible">
-                        <button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>
-                        <p>{{ session('message') }}</p>
+</div>
+<section class="content">
+    <div class="row">
+        <div class="col-md-6">
+            @if (session('message'))
+            <div class="callout callout-success alert-dismissible">
+                <button aria-hidden="true" class="close close-alert" data-dismiss="alert" type="button">×</button>
+                <p>{{ session('message') }}</p>
+            </div>@endif
+            <div class="card" style="padding: 10px">
+                <div class="card-header">
+                    <h3 class="card-title">Permission</h3>
+                    <div class="card-tools">
+                        <ul class="pagination pagination-sm m-0 float-right">
+                            <li class="page-item">
+                                <a class="page-link" href="#">&laquo;</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">1</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">2</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">3</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">&raquo;</a>
+                            </li>
+                        </ul>
                     </div>
-                @endif
-
-
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="row">
-                            <div class="col-md-4">
-                                Permission Name
-                            </div>
-                            <div class="col-md-4">
-                                Display Name
-                            </div>
-                            <div class="col-md-4">
-                                Description
-                            </div>
-                        </div>
-                        <hr>
-                    </div>
-                </div>
-
-                @foreach ($permissions as $permission)
-
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="card" style="margin-top: -8px">
-                            <!-- /.card-header -->
-                            <div style="padding: 10px">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        {{ $permission->name }}
-                                    </div>
-                                    <div class="col-md-4">
-                                        {{ $permission->display_name }}
-                                    </div>
-                                    <div class="col-md-4">
-                                        {{ $permission->description }}
-                                    </div>
-                                </div>  
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <button class="btn btn-primary">Edit</button>
-                    </div>
-                </div>
-
-                @endforeach
-                <!-- /.card -->
-
-            </div>
+                </div><!-- /.card-header -->
+                <div class="card-body p-0">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th style="width: 10px">#</th>
+                                <th>Name</th>
+                                <th>Display Name</th>
+                                <th>Description</th>
+                                <th style="width: 40px">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($permissions as $permission)
+                            <tr>
+                                <td></td>
+                                <td>{{ $permission->name }}</td>
+                                <td>{{ $permission->display_name }}</td>
+                                <td>{{ $permission->description }}</td>
+                                <td>
+                                    <a href="">Edit</a>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div><!-- /.card-body -->
+            </div><!-- /.card -->
         </div>
-
-    </section>
+    </div>
+</section>
 
 @endsection

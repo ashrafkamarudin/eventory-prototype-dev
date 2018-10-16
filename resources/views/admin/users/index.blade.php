@@ -25,7 +25,9 @@
 
                 <div class="card card-primary card-outline"">
                     <div class="card-header">
+                        @permission('create-users')
                         <a href="{{ url('events/create') }}" class="btn btn-outline-primary">Add New</a>
+                        @endpermission
                         <div class="card-tools">
                         </div>
                     </div>
@@ -49,10 +51,14 @@
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->created_at->format('jS \\of F Y - h:i:s A') }}</td>
                                     <td class="no">
+
+                                        @permission('update-users')
                                         <a href="{{ url('events/'.$user->id.'/edit') }}" title="Edit" class="btn btn-warning">
                                             <i class="fa fa-edit"></i>
                                         </a>
+                                        @endpermission
 
+                                        @permission('delete-users')
                                         <form style="display: inline" action="{{ url('events/'.$user->id)}}"
                                               method="post">
                                             <input type="hidden" name="_method" value="DELETE">
@@ -61,6 +67,7 @@
                                                 <i class="fa fa-trash-o"></i>
                                             </button>
                                         </form>
+                                        @endpermission
                                     </td>
                                 </tr>
                             @endforeach
