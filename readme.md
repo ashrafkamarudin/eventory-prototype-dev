@@ -6,11 +6,11 @@
 
 - [ ] login
 	- [x] laravel auth facade
-	- [ ] install and configure laratrust
-	- [ ] make 3 roles
-		- [ ] superadmin
-		- [ ] organiser
-		- [ ] user
+	- [x] install and configure laratrust
+	- [x] make 3 roles
+		- [x] superadmin
+		- [x] organiser / administrator
+		- [x] user
 
 - [ ] Dashboard
 	- [ ] 
@@ -44,6 +44,66 @@
 			- [x] update into db
 		- [x] destroy()
 			- [ ] delete image
+- [ ] Manage Users
+	- [ ] Interface
+		- [x] Index
+		- [ ] Add
+		- [ ] Edit
+	- [ ] Resource Controller
+		- [x] index()
+			- [x] pagination - dataTable
+		- [ ] create()
+			- [x] return create page
+			- [ ] add roles
+		- [ ] store()
+			- [ ] insert into db
+		- [ ] show()
+		- [ ] edit()
+			- [ ] edit roles
+			- [ ] return edit page with saved data
+		- [ ] update()
+			- [ ] update roles
+			- [ ] update into db
+		- [ ] destroy()
+- [ ] Roles and Permission
+	- [ ] Roles
+		- [ ] Interface
+			- [x] Index
+			- [ ] Add
+			- [ ] Edit
+		- [ ] Resource Controller
+			- [x] index()
+				- [ ] pagination
+			- [ ] create()
+				- [ ] return create page
+			- [ ] store()
+				- [ ] insert into db
+			- [ ] show()
+			- [ ] edit()
+				- [ ] return edit page with saved data
+			- [ ] update()
+				- [ ] update into db
+			- [ ] destroy()
+	- [ ] Permission
+		- [ ] Roles
+		- [ ] Interface
+			- [x] Index
+			- [ ] Add
+			- [ ] Edit
+		- [ ] Resource Controller
+			- [x] index()
+				- [ ] pagination
+			- [ ] create()
+				- [ ] return create page
+			- [ ] store()
+				- [ ] insert into db
+			- [ ] show()
+			- [ ] edit()
+				- [ ] return edit page with saved data
+			- [ ] update()
+				- [ ] update into db
+			- [ ] destroy()
+- [ ] Reporting
 - [ ] Homepage
 	- [ ] featured event
 	- [x] list recent event
@@ -83,16 +143,16 @@
 ## IDEA DUMP
 
 ### Main Features
-Login
+- Login
 	- Personal Account
 	- Organizer
 		- Manage Users
 	- super admin
-Event Posts
+- Event Posts
 	- Blog style
 	- with tags and categories
 	- Comments(optional)
-Reporting
+- Reporting
 
 ### Technology Stack
 - Laravel

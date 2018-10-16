@@ -5,9 +5,11 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laratrust\Traits\LaratrustUserTrait;
 
 class User extends Authenticatable
 {
+    use LaratrustUserTrait;
     use Notifiable;
 
     /**
@@ -31,5 +33,10 @@ class User extends Authenticatable
     public function events($value='')
     {
         return $this->hasMany('App\Event');
+    }
+
+    public function roles($value='')
+    {
+        return $this->hasMany('App\Role');
     }
 }

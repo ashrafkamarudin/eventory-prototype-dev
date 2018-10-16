@@ -27,5 +27,9 @@ Route::get('event/{slug}', ['as' => 'event.single', 'uses' => 'Admin\EventContro
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/dashboard', 'Admin\DashboardController@index')->name('dashboard');
+
 	Route::resource('events', 'Admin\EventController');
+	Route::resource('users', 'Admin\UserController');
+	Route::resource('permissions', 'Admin\PermissionController');
+	Route::resource('roles', 'Admin\RoleController');
 });

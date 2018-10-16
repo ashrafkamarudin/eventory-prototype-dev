@@ -191,7 +191,7 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <li class="nav-header">GENERAL</li>
                         <li class="nav-item has-treeview">
-                            <a href="{{ url('dashboard') }}" class="nav-link is-a {{ Request::is('home') ? 'active' : '' }}">
+                            <a href="{{ url('dashboard') }}" class="nav-link is-a {{ Request::is('dashboard') ? 'active' : '' }}">
                                 <i class="nav-icon fa fa-dashboard"></i>
                                 <p>
                                     Dashboard
@@ -225,6 +225,48 @@
                             </ul>
                         </li>
                         <li class="nav-header">ADMINISTRATION</li>
+                        <li class="nav-item has-treeview {{ Request::is('users') ? 'menu-open' : '' }}">
+                            <a href="#" class="nav-link {{ Request::is('users') ? 'active' : '' }}">
+                                <i class="nav-icon fa fa-edit"></i>
+                                <p>
+                                    Manage Users
+                                    <i class="fa fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview" style="display: {{ Request::segment(2) == 'post' ? 'block':'' }}">
+                                <li class="nav-item">
+                                    <a href="{{ URL::to('users') }}" class="nav-link {{ Request::is('users') ? 'active' : '' }}">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>Users</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item has-treeview {{ Request::is('roles') ? 'menu-open' : '' }} {{ Request::is('permissions') ? 'menu-open' : '' }}">
+                            <a href="#" class="nav-link {{ Request::is('roles') ? 'active' : '' }} {{ Request::is('permissions') ? 'active' : '' }}">
+                                <i class="nav-icon fa fa-edit"></i>
+                                <p>
+                                    Roles and Permission
+                                    <i class="fa fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview" style="display: {{ Request::segment(2) == 'post' ? 'block':'' }}">
+                                <li class="nav-item">
+                                    <a href="{{ URL::to('roles') }}" class="nav-link {{ Request::is('roles') ? 'active' : '' }}">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>Roles</p>
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ url('permissions') }}" class="nav-link {{ Request::is('permissions') ? 'active' : '' }}">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>Permissions</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                         <li class="nav-item has-treeview">
                             <a href="{{ url('admz/config') }}" class="nav-link {{ Request::segment(2) == 'config' ? 'active':'' }}">
                                 <i class="nav-icon fa fa-gears"></i>
@@ -233,25 +275,6 @@
                                 </p>
                             </a>
                         </li>
-                      <li class="nav-header">LABELS</li>
-                      <li class="nav-item">
-                        <a href="#" class="nav-link">
-                          <i class="nav-icon fa fa-circle-o text-danger"></i>
-                          <p class="text">Important</p>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="#" class="nav-link">
-                          <i class="nav-icon fa fa-circle-o text-warning"></i>
-                          <p>Warning</p>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="#" class="nav-link">
-                          <i class="nav-icon fa fa-circle-o text-info"></i>
-                          <p>Informational</p>
-                        </a>
-                      </li>
                       <li class="nav-header">ACTION</li>
                       <li class="nav-item">
                         <a class="nav-link" href="{{ route('logout') }}"
