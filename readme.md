@@ -16,103 +16,36 @@
 	- [ ] 
 
 - [ ] Manage Event [Admin]
-	- [ ] Interface
-		- [x] Index
-		- [x] Add
-		- [x] Edit
-	- [ ] Resource Controller
-		- [x] index()
-			- [x] pagination - dataTable
-		- [ ] create()
-			- [x] return create page
-			- [ ] add tags
-			- [ ] add categories
-		- [x] store()
-			- [x] add slug
-			- [x] add image
-			- [ ] add tags
-			- [ ] add categories
-			- [x] insert into db
-		- [ ] show()
-		- [x] edit()
-			- [x] return edit page with saved data
-		- [x] update()
-			- [x] update slug
-			- [x] update image
-			- [ ] update tags
-			- [ ] update categories
-			- [x] update into db
-		- [x] destroy()
-			- [ ] delete image
+	- [x] Create, Read, Update, Delete
+		- [ ] must add daterange
+	- [x] slugs
+	- [x] published and drafts
+	- [ ] tags
+	- [ ] categories
+
 - [ ] Manage Users
-	- [ ] Interface
-		- [x] Index
-		- [ ] Add
-		- [ ] Edit
-	- [ ] Resource Controller
-		- [x] index()
-			- [x] pagination - dataTable
-		- [ ] create()
-			- [x] return create page
-			- [ ] add roles
-		- [ ] store()
-			- [ ] insert into db
-		- [ ] show()
-		- [ ] edit()
-			- [ ] edit roles
-			- [ ] return edit page with saved data
-		- [ ] update()
-			- [ ] update roles
-			- [ ] update into db
-		- [ ] destroy()
+	- [x] Create, Read, Update
+	- [x] assign/change roless
+
 - [ ] Roles and Permission
 	- [ ] Roles
-		- [ ] Interface
-			- [x] Index
-			- [ ] Add
-			- [ ] Edit
-		- [ ] Resource Controller
-			- [x] index()
-				- [ ] pagination
-			- [ ] create()
-				- [ ] return create page
-			- [ ] store()
-				- [ ] insert into db
-			- [ ] show()
-			- [ ] edit()
-				- [ ] return edit page with saved data
-			- [ ] update()
-				- [ ] update into db
-			- [ ] destroy()
+		- Read and Update
 	- [ ] Permission
-		- [ ] Roles
-		- [ ] Interface
-			- [x] Index
-			- [ ] Add
-			- [ ] Edit
-		- [ ] Resource Controller
-			- [x] index()
-				- [ ] pagination
-			- [ ] create()
-				- [ ] return create page
-			- [ ] store()
-				- [ ] insert into db
-			- [ ] show()
-			- [ ] edit()
-				- [ ] return edit page with saved data
-			- [ ] update()
-				- [ ] update into db
-			- [ ] destroy()
+		- [ ] Read and Update
+
 - [ ] Reporting
+
 - [ ] Homepage
 	- [ ] featured event
 	- [x] list recent event
 		- [ ] sort event by start date, ascending
+
 - [ ] Post
 	- [x] view single event with slug
-		- [x] added comment
+		- [x] comments
 	- [ ] view list of all event
 		- [ ] sort event by start date, ascending
+
 - [ ] About Us
 - [ ] Contact Us
 - [ ] Privacy Policy
@@ -180,19 +113,3 @@
 		- 500 error
 		- Contact pages
 Deployment
-
-### Pages
-
-1. Homepage
-2. Login
-3. Register
-4. ToS (Terms of Service)
-5. Privacy Policy
-6. Contact Form
-7. Search Results Page
-8. Show events by category/tags page
-9. Submit new Event post
-10. Edit existing Event post
-11. Event Views ( show event in a list)
-12. Event Post
-13. Public Profile for user
