@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
+use Hash;
+
 use App\User;
+use App\Role;
 
 class UserController extends Controller
 {
@@ -21,7 +24,7 @@ class UserController extends Controller
 
         // load the view and pass the events
         return view('admin.users.index')
-            ->with('users', $users);
+            ->withUsers($users);
     }
 
     /**
@@ -31,7 +34,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $roles = Role::all();
+        return view('admin.users.create')->withRoles($roles);
     }
 
     /**
@@ -42,7 +46,40 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validateWith([
+        'name' => 'required|max:255',
+        'email' => 'required|email|unique:users'
+      ]);
+
+      if (!empty($request->password)) {
+        // set the manual password
+        $password = trim($request->password);
+      } else {
+        $password = 'password';
+
+        // auto-generate password
+        /*
+        $length = 10;
+        $keyspace = '123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ';
+        $str = '';
+        $max = mb_strlen($keyspace, '8bit') - 1;
+        for ($i = 0; $i < $length; ++$i) {
+            $str .= $keyspace[random_int(0, $max)];
+        }
+        $password = $str;*/
+      }
+
+      $user = new User();
+      $user->name = $request->name;
+      $user->email = $request->email;
+      $user->password = Hash::make($password);
+      $user->save();
+
+      if ($request->role) {
+        $user->syncRoles($request->role);
+      }
+
+      return redirect()->route('admin.users.show', $user->id);
     }
 
     /**
@@ -53,7 +90,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::where('id', $id)->with('roles')->first();
+        return view("admin.users.show")->withUser($user);
     }
 
     /**
@@ -64,7 +102,19 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $roles = Role::all();
+        $user = User::findOrFail($id);
+
+        $meta = [
+            'title' => 'Edit Post',
+            'keyword' => 'dasboard',
+            'description' => 'dasboard',
+        ];
+
+        return view('admin.users.edit')
+            ->withUser($user)
+            ->withRoles($roles)
+            ->withMeta($meta);
     }
 
     /**
@@ -76,7 +126,35 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validateWith([
+            'name' => 'required|max:255',
+            'email' => 'required|email|unique:users,email,'.$id
+          ]);
+
+          $user = User::findOrFail($id);
+          $user->name = $request->name;
+          $user->email = $request->email;
+
+          /*
+          if ($request->password_options == 'auto') {
+            $length = 10;
+            $keyspace = '123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ';
+            $str = '';
+            $max = mb_strlen($keyspace, '8bit') - 1;
+            for ($i = 0; $i < $length; ++$i) {
+                $str .= $keyspace[random_int(0, $max)];
+            }
+            $user->password = Hash::make($str);
+          } elseif ($request->password_options == 'manual') {
+            $user->password = Hash::make($request->password);
+          }*/
+
+          $user->save();
+
+          $user->syncRoles($request->role);
+
+          //$user->syncRoles(explode(',', $request->roles));
+          return redirect()->route('users.show', $id);
     }
 
     /**

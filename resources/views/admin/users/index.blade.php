@@ -8,7 +8,7 @@
                     <h1 class="m-0 text-dark">
                         Users
                         @permission('create-users')
-                        <a href="{{ url('events/create') }}" class="btn btn-outline-primary pull-right">Add New</a>
+                        <a href="{{ url('users/create') }}" class="btn btn-outline-primary pull-right">Add New</a>
                         @endpermission
                     </h1>
                 </div>
@@ -50,22 +50,20 @@
                                     <td>{{ $user->created_at->format('jS \\of F Y - h:i:s A') }}</td>
                                     <td class="no">
 
-                                        @permission('update-users')
-                                        <a href="{{ url('events/'.$user->id.'/edit') }}" title="Edit" class="btn btn-warning">
-                                            <i class="fa fa-edit"></i>
+                                        @permission('read-users')
+                                        <a href="{{ url('users/'.$user->id) }}" title="Edit" class="btn btn-outline-primary">
+                                            <i class="fa fa-eye"></i>
+                                            View
                                         </a>
                                         @endpermission
 
-                                        @permission('delete-users')
-                                        <form style="display: inline" action="{{ url('events/'.$user->id)}}"
-                                              method="post">
-                                            <input type="hidden" name="_method" value="DELETE">
-                                            {{ csrf_field() }}
-                                            <button class="btn btn-danger" type="submit" onclick="return confirm(' you want to delete?');">
-                                                <i class="fa fa-trash-o"></i>
-                                            </button>
-                                        </form>
+                                        @permission('update-users')
+                                        <a href="{{ url('users/'.$user->id.'/edit') }}" title="Edit" class="btn btn-default">
+                                            <i class="fa fa-edit"></i>
+                                            Edit
+                                        </a>
                                         @endpermission
+
                                     </td>
                                 </tr>
                             @endforeach
