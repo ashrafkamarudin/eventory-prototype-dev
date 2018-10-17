@@ -31,8 +31,8 @@
                         <li class="nav-header">CONTENT</li>
 
                         @permission('read-events')
-                        <li class="nav-item has-treeview {{ Request::is('events') ? 'menu-open' : '' }}">
-                            <a href="#" class="nav-link {{ Request::is('events') ? 'active' : '' }}">
+                        <li class="nav-item has-treeview {{ Request::is('events/*') ? 'menu-open' : '' }}">
+                            <a href="#" class="nav-link {{ Request::is('events/*') ? 'active' : '' }}">
                                 <i class="nav-icon fa fa-paper-plane"></i>
                                 <p>
                                     Manage Event
@@ -40,18 +40,35 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview" style="display: {{ Request::segment(2) == 'post' ? 'block':'' }}">
+
+                                @permission('create-events')
                                 <li class="nav-item">
-                                    <a href="{{ URL::to('events') }}" class="nav-link {{ Request::is('events') ? 'active' : '' }}">
+                                    <a href="{{ URL::to('events/create') }}" class="nav-link {{ Request::is('events/create') ? 'active' : '' }}">
+                                        <i class="fa fa-plus-circle nav-icon"></i>
+                                        <p>Create New</p>
+                                    </a>
+                                </li>
+                                @endpermission
+                                <li class="nav-item">
+                                    <a href="{{ URL::to('events/published') }}" class="nav-link {{ Request::is('events/published') ? 'active' : '' }}">
                                         <i class="fa fa-file-text-o nav-icon"></i>
-                                        <p>Events - Published</p>
+                                        <p>Published</p>
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ URL::to('events/drafts') }}" class="nav-link  {{ Request::is('events/drafts') ? 'active' : '' }}">
+                                        <i class="fa fa-clipboard nav-icon"></i>
+                                        <p>Drafts</p>
                                     </a>
                                 </li>
                             </ul>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="{{ url('admz/category/post') }}" class="nav-link">
-                                        <i class="fa fa-clipboard nav-icon"></i>
-                                        <p>Events - Drafts</p>
+                                        <i class="fa fa-inbox nav-icon"></i>
+                                        <p>Archived</p>
                                     </a>
                                 </li>
                             </ul>
