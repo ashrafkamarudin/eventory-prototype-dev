@@ -14,9 +14,10 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   // get all event
-        $events = Event::all();
-        $threeRecentEvent = Event::orderBy('created_at', 'desc')->take(3)->get();
+    {   
+        // get all published event and 3 recent published event
+        $events = Event::all()->where('status', '=', 1);
+        $threeRecentEvent = Event::orderBy('created_at', 'desc')->where('status', '=', 1)->take(3)->get();
 
         return view('home')
                 ->withEvents($events)

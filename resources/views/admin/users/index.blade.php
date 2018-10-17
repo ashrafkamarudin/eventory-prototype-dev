@@ -31,7 +31,7 @@
                 <div class="card"">
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <table id="event" class="table table-striped table-valign-middle">
+                        <table id="dt" class="table table-striped table-valign-middle">
                             <thead>
                                 <tr>
                                     <th>No</th>
@@ -47,20 +47,18 @@
                                     <td class="no">{{ $key + 1 }}</td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
-                                    <td>{{ $user->created_at->format('jS \\of F Y - h:i:s A') }}</td>
+                                    <td>{{ $user->created_at->toFormattedDateString() }}</td>
                                     <td class="no">
 
                                         @permission('read-users')
                                         <a href="{{ url('users/'.$user->id) }}" title="Edit" class="btn btn-outline-primary">
                                             <i class="fa fa-eye"></i>
-                                            View
                                         </a>
                                         @endpermission
 
                                         @permission('update-users')
                                         <a href="{{ url('users/'.$user->id.'/edit') }}" title="Edit" class="btn btn-default">
                                             <i class="fa fa-edit"></i>
-                                            Edit
                                         </a>
                                         @endpermission
 
@@ -78,4 +76,8 @@
 
     </section>
 
+@endsection
+
+@section('script')
+    @include('admin.partials.libs.datatables-js')
 @endsection

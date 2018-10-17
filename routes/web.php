@@ -37,9 +37,17 @@ Route::group(['middleware' => 'auth'], function () {
 
 	// SuperAdministrator and Administrator
 	Route::group(['middleware' => ['role:superadministrator|administrator']], function() {
-		Route::resource('users', 'Admin\UserController');
-		Route::resource('events', 'Admin\EventController');
+
+		// dashboard route
 		Route::get('/dashboard', 'Admin\DashboardController@index')->name('dashboard');
+
+		// manage events route
+		Route::get('events/published', 'Admin\EventController@getPublished');
+		Route::get('events/drafts', 'Admin\EventController@getDrafts');
+		Route::resource('events', 'Admin\EventController');
+
+		// manage users route
+		Route::resource('users', 'Admin\UserController');
 	});
 	
 	// User

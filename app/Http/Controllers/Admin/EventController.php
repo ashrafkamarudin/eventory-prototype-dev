@@ -21,15 +21,13 @@ class EventController extends Controller
      */
     public function index()
     {
-        // get current logged in user
-        $uid = \Auth::user()->id;
+        // get all published event and 3 recent published event
+        $events = Event::all()->where('status', '=', 1);
+        $threeRecentEvent = Event::orderBy('created_at', 'desc')->where('status', '=', 1)->take(3)->get();
 
-        // get all the events from this user
-        $events = User::find($uid)->events;
-
-        // load the view and pass the events
-        return view('admin.events.index')
-            ->with('events', $events);
+        return view('home')
+                ->withEvents($events)
+                ->withThreeRecentEvent($threeRecentEvent);
     }
 
     /**
@@ -81,7 +79,7 @@ class EventController extends Controller
         $event->title = $request->title;
         $event->user_id = Auth::user()->id;
         $event->content = $request->description;
-        $event->status = $request->publish;
+        $event->status = $request->status; // published or drafts, boolean
         $event->plugin = $request->dataPlugin;
 
         if (empty($request->seo)) {
@@ -203,7 +201,7 @@ class EventController extends Controller
         $event->title = $request->title;
         $event->user_id = Auth::user()->id;
         $event->content = $request->description;
-        $event->status = $request->publish;
+        $event->status = $request->status; // published or drafts, boolean
         $event->plugin = $request->dataPlugin;
         if (empty($request->seo)) {
             $event->seo = strip_tags(str_limit($request->description, 150));
@@ -243,15 +241,59 @@ class EventController extends Controller
         return back()->with('message', 'Success Delete');
     }
 
+    /**
+     * Display the specified resource with slug.
+     *
+     * @param  string  $slug
+     * @return \Illuminate\Http\Response
+     */
     public function getSingle($slug)
     {
         // fetch from db based on slug
-        $event = Event::where('slug', '=', $slug)->firstOrFail();
-        $threeRecentEvent = Event::orderBy('created_at', 'desc')->take(3)->get();
+        $event = Event::where('slug', '=', $slug)->where('status', '=', 1)->firstOrFail();
+        $threeRecentEvent = Event::orderBy('created_at', 'desc')->where('status', '=', 1)->take(3)->get();
 
         // return the view and pass in the post object
         return view('event')
                 ->withEvent($event)
                 ->withThreeRecentEvent($threeRecentEvent);
+    }
+
+    /**
+     * Display a listing of the published resource.
+     *
+     * @param  string  $slug
+     * @return \Illuminate\Http\Response
+     */
+    public function getPublished($value='')
+    {
+        // get current logged in user
+        $uid = \Auth::user()->id;
+
+        // get all published the events from this user
+        $events = User::find($uid)->events->where('status', '=', 1);
+
+        // load the view and pass the events
+        return view('admin.events.index')
+            ->with('events', $events);
+    }
+
+    /**
+     * Display a listing of the resource's drafts
+     *
+     * @param  string  $slug
+     * @return \Illuminate\Http\Response
+     */
+    public function getDrafts($value='')
+    {
+        // get current logged in user
+        $uid = \Auth::user()->id;
+
+        // get all the drafts events from this user
+        $events = User::find($uid)->events->where('status', '=', 0);
+
+        // load the view and pass the events
+        return view('admin.events.index')
+            ->with('events', $events);
     }
 }

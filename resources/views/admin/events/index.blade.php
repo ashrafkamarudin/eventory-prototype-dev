@@ -7,10 +7,6 @@
                 <div class="col-sm-6 col-md-11">
                     <h1 class="m-0 text-dark">
                         Events
-
-                        @permission('create-events')
-                        <a href="{{ url('events/create') }}" class="btn btn-outline-primary pull-right">Add New</a>
-                        @endpermission
                     </h1>
                 </div>
             </div>
@@ -32,13 +28,13 @@
                 <div class="card">
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <table id="event" class="table table-hover">
+                        <table id="dt" class="table table-hover">
                             <thead>
                                 <tr>
                                     <th>No</th>
                                     <th>Title</th>
-                                    <th>Author</th>
-                                    <th>Created at</th>
+                                    <th>Created by</th>
+                                    <th>Created on</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -48,21 +44,27 @@
                                     <td class="no">{{ $key + 1 }}</td>
                                     <td>{{ $event->title }} {{ $event->status == 0 ? ' --Draf':'' }}</td>
                                     <td>{{ $event->user->name }}</td>
-                                    <td>{{ $event->created_at->format('jS \\of F Y - h:i:s A') }}</td>
-                                    <td class="no">
+                                    <td>{{ $event->created_at->toFormattedDateString() }}</td>
+                                    <td>
 
-                                        @permission('edit-events')
-                                        <a href="{{ url('events/'.$event->id.'/edit') }}" title="Edit" class="btn btn-warning">
+                                        @permission('read-events')
+                                        <a href="{{ url('events/'.$event->id) }}" title="Edit" class="btn btn-outline-primary">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
+                                        @endpermission
+
+                                        @permission('update-events')
+                                        <a href="{{ url('events/'.$event->id.'/edit') }}" title="Edit" class="btn btn-default">
                                             <i class="fa fa-edit"></i>
                                         </a>
                                         @endpermission
 
                                         @permission('delete-events')
-                                        <form style="display: inline" action="{{ url('events/'.$event->id)}}"
+                                        <form style="display: inline;" action="{{ url('events/'.$event->id)}}"
                                               method="post">
                                             <input type="hidden" name="_method" value="DELETE">
                                             {{ csrf_field() }}
-                                            <button class="btn btn-danger" type="submit" onclick="return confirm(' you want to delete?');">
+                                            <button class="btn btn-outline-danger" type="submit" onclick="return confirm(' you want to delete?');">
                                                 <i class="fa fa-trash-o"></i>
                                             </button>
                                         </form>
@@ -81,4 +83,8 @@
 
     </section>
 
+@endsection
+
+@section('script')
+    @include('admin.partials.libs.datatables-js')
 @endsection

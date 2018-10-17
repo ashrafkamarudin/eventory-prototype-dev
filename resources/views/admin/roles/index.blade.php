@@ -14,7 +14,7 @@
     <section class="content">
 
         <div class="row">
-            <div class="col-md-6 card-columns">
+            <div class="col-md-11 card-group">
 
                 @if (session('message'))
                     <div class="callout callout-success alert-dismissible">
@@ -24,7 +24,7 @@
                 @endif
 
                 @foreach ($roles as $role)
-                
+                <div class="col-md-3">
                   <div class="card">
                     <div class="card-body">
                       <h5 class="card-title">{{ $role->display_name }}</h5>
@@ -33,14 +33,22 @@
                           {{ $role->description }}
                       </p>
                       <div>
-                        <a href="" class="btn btn-primary">Edit</a>
-                        <a href="" class="btn btn-default">Delete</a>
+                        <a href="" class="btn btn-primary">
+                          <i class="fa fa-eye"></i>
+                          View
+                        </a>
+                        <a href="" class="btn btn-default pull-right">
+                          <i class="fa fa-edit"></i>
+                          Edit
+                        </a>
                       </div>
                     </div>
                   </div>
+                  <!-- /.card -->
+                  </div>
 
                 @endforeach
-                <!-- /.card -->
+
             </div>
         </div>
 
