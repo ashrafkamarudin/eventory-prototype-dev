@@ -29,7 +29,7 @@
 
 - [ ] Roles and Permission
 	- [ ] Roles
-		- Read and Update
+		- [ ] Read and Update
 	- [ ] Permission
 		- [ ] Read and Update
 
@@ -72,6 +72,8 @@
 - Artisan clear cache
 	- php artisan config:clear => clear configuration cache(.env)
 	- php artisan cache:clear => clear application cache
+	- php artisan route:clear => clear routes cache
+	- php artisan view:clear => clear view cache
 
 ## IDEA DUMP
 
