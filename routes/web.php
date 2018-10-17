@@ -11,15 +11,22 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
+Route::get('/about-us', function () {
+    return view('aboutus');
+})->name('about-us');
+
+Route::get('/contact-us', function () {
+    return view('contactus');
+})->name('contact-us');
+
+Route::get('/privacy-policy', function () {
+    return view('privacy-policy');
+})->name('privacy-policy');
+
+Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
-
-
 Route::resource('comments', 'CommentController');
-
 Auth::routes();
 
 Route::get('event/{slug}', ['as' => 'event.single', 'uses' => 'Admin\EventController@getSingle'])
@@ -28,7 +35,6 @@ Route::get('event/{slug}', ['as' => 'event.single', 'uses' => 'Admin\EventContro
 //Route::prefix('manage')->middleware('role:superadministrator|administrator|editor|author|contributor')->group(function () {
 Route::group(['middleware' => 'auth'], function () {
 
-
 	// SuperAdministrator and Administrator
 	Route::group(['middleware' => ['role:superadministrator|administrator']], function() {
 		Route::resource('users', 'Admin\UserController');
@@ -36,10 +42,12 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::get('/dashboard', 'Admin\DashboardController@index')->name('dashboard');
 	});
 	
-	// SuperAdministrator
-	Route::group(['middleware' => ['role:superadministrator']], function() {
-		Route::resource('permissions', 'Admin\PermissionController', ['except' => 'destroy']);
-		Route::resource('roles', 'Admin\RoleController', ['except' => 'destroy']);
+	// User
+	Route::group(['middleware' => ['role:user']], function() {
+		//Route::resource('users', 'Admin\UserController');
+		//Route::resource('permissions', 'Admin\PermissionController', ['except' => 'destroy']);
+		//Route::resource('roles', 'Admin\RoleController', ['except' => 'destroy']);
+		//Route::resource('events', 'Admin\EventController');
 	});
 
 	// Administrator / organiser
@@ -47,12 +55,11 @@ Route::group(['middleware' => 'auth'], function () {
 	    //Route::get('/manage', ['middleware' => ['permission:manage-admins'], 'uses' => 'AdminController@manageAdmins']);
 	});
 
-	// User
-	Route::group(['middleware' => ['role:user']], function() {
-		//Route::resource('users', 'Admin\UserController');
-		//Route::resource('permissions', 'Admin\PermissionController', ['except' => 'destroy']);
-		//Route::resource('roles', 'Admin\RoleController', ['except' => 'destroy']);
-		//Route::resource('events', 'Admin\EventController');
+
+	// SuperAdministrator
+	Route::group(['middleware' => ['role:superadministrator']], function() {
+		Route::resource('permissions', 'Admin\PermissionController', ['except' => 'destroy']);
+		Route::resource('roles', 'Admin\RoleController', ['except' => 'destroy']);
 	});
 });
 

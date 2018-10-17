@@ -67,9 +67,9 @@
                         </li>
                         <li class="nav-item"><a href="{{ route('home') }}" class="nav-link {{ Request::is('event/*') ? 'active' : '' }} ">Post</a>
                         </li>
-                        <li class="nav-item"><a href="blog.html" class="nav-link ">About</a>
+                        <li class="nav-item"><a href="{{ route('about-us') }}" class="nav-link {{ Request::is('about-us') ? 'active' : '' }}">About</a>
                         </li>
-                        <li class="nav-item"><a href="#" class="nav-link ">Contact</a>
+                        <li class="nav-item"><a href="{{ route('contact-us') }}" class="nav-link {{ Request::is('contact-us') ? 'active' : '' }}">Contact</a>
                         </li>
 
                         <div class="navbar-text"><a href="#" class="search-btn"></a></div>
