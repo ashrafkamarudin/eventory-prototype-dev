@@ -49,21 +49,16 @@
         <div class="container">
           <!-- Navbar Brand -->
           <div class="navbar-header d-flex align-items-center justify-content-between">
-            <!-- Navbar Brand --><a href="index.html" class="navbar-brand">{{ config('app.name', 'Laravel') }}</a>
+            <!-- Navbar Brand --><a href="{{ url('/') }}" class="navbar-brand">{{ config('app.name', 'Laravel') }}</a>
             <!-- Toggle Button-->
             <button type="button" data-toggle="collapse" data-target="#navbarcollapse" aria-controls="navbarcollapse" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span></span><span></span><span></span></button>
           </div>
           <!-- Navbar Menu -->
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
-
+          <div class="collapse navbar-collapse" id="navbarcollapse">
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
-                        <li class="nav-item"><a href="{{ route('home') }}" class="nav-link {{ Request::is('home') ? 'active' : '' }}">Home</a>
+                        <li class="nav-item"><a href="{{ route('home') }}" class="nav-link {{ Request::is('/') ? 'active' : '' }}">Home</a>
                         </li>
                         <li class="nav-item"><a href="{{ route('home') }}" class="nav-link {{ Request::is('event/*') ? 'active' : '' }} ">Post</a>
                         </li>
@@ -103,7 +98,7 @@
                                     </h6>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
@@ -119,9 +114,9 @@
       </nav>
     </header>
 
-    <div class="container">
+    <main class="container">
       @yield('content')
-    </div>
+    </main>
 
     <!-- Page Footer-->
     <footer class="main-footer">

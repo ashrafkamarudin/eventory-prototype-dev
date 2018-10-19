@@ -58,7 +58,9 @@
 
 - Artisan Make
 	- php artisan make:model => create model. you can add -mcr or -a at the end. (-m, create new migration)
-	- php artisan make:model -mcr => -m, --migration create new migration -c, --controller create new controller -r, --resource indicates if the generated controller should be a resource controller
+	- php artisan make:model -mcr => -m, --migration create new migration -c, 
+										 --controller create new controller -r, 
+										 --resource indicates if the generated controller should be a resource controller
 	- php artisan make:model -a => for laravel 5.6^ -a, -all Generate a migration, factory and a resource controller
 	- php artisan make:controller ControllerName --resource => create resource controller
 	- php artisan make:migration create_tablename_table => create a migration name for the table

@@ -6,7 +6,6 @@
         <div class="row mb-2">
             <div class="col-sm-6 col-md-11">
                 <h1 class="m-0 text-dark">Create User</h1>
-                <hr>
             </div>
         </div>
     </div>

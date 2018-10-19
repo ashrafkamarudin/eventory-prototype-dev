@@ -47,9 +47,9 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $this->validateWith([
-        'name' => 'required|max:255',
-        'email' => 'required|email|unique:users'
-      ]);
+            'name' => 'required|max:255',
+            'email' => 'required|email|unique:users'
+        ]);
 
       if (!empty($request->password)) {
         // set the manual password

@@ -20,9 +20,9 @@
 
       @include('admin.partials.sidebar')
 
-        <div class="content-wrapper">
+        <main class="content-wrapper">
           @yield('content')
-        </div>  
+        </main>  
         
         <footer class="main-footer">
           <strong>Copyright &copy; 2018-2018 <a href="">ASHRAF KAMARUDIN</a>.</strong> All rights reserved. Prototype 1

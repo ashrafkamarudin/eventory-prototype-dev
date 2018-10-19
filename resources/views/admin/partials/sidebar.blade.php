@@ -77,8 +77,8 @@
                         <li class="nav-header">ADMINISTRATION</li>
 
                         @permission('read-users')
-                        <li class="nav-item has-treeview {{ Request::is('users') ? 'menu-open' : '' }}">
-                            <a href="#" class="nav-link {{ Request::is('users') ? 'active' : '' }}">
+                        <li class="nav-item has-treeview {{ Request::is('users/*') ? 'menu-open' : '' }}">
+                            <a href="#" class="nav-link {{ Request::is('users/*') ? 'active' : '' }}">
                                 <i class="nav-icon fa fa-users"></i>
                                 <p>
                                     Manage Users
@@ -86,9 +86,17 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview" style="display: {{ Request::segment(2) == 'post' ? 'block':'' }}">
+                                @permission('create-users')
+                                <li class="nav-item">
+                                    <a href="{{ URL::to('users/create') }}" class="nav-link {{ Request::is('users/create') ? 'active' : '' }}">
+                                        <i class="fa fa-plus-circle nav-icon"></i>
+                                        <p>Create New</p>
+                                    </a>
+                                </li>
+                                @endpermission
                                 @permission('read-users')
                                 <li class="nav-item">
-                                    <a href="{{ URL::to('users') }}" class="nav-link {{ Request::is('users') ? 'active' : '' }}">
+                                    <a href="{{ URL::to('users/list') }}" class="nav-link {{ Request::is('users/list') ? 'active' : '' }}">
                                         <i class="fa fa-address-book-o nav-icon"></i>
                                         <p>Users</p>
                                     </a>

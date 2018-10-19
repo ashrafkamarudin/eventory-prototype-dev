@@ -25,7 +25,7 @@ Route::get('/privacy-policy', function () {
 })->name('privacy-policy');
 
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('comments', 'CommentController');
 Auth::routes();
 
@@ -39,6 +39,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::group(['middleware' => ['role:superadministrator|administrator']], function() {
 
 		// dashboard route
+		Route::get('users/list', 'Admin\UserController@index');
 		Route::get('/dashboard', 'Admin\DashboardController@index')->name('dashboard');
 
 		// manage events route
