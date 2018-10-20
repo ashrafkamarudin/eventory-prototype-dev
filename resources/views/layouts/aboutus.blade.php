@@ -14,17 +14,9 @@
   </head>
   <body>
 
-    <div class='thetop'></div>
-
     @include('partials.header')
 
-    <main class="container">
-      @yield('content')
-    </main>
-
-    <div class='scrolltop'>
-        <div class='scroll icon'><i class="fa fa-4x fa-angle-up"></i></div>
-    </div>
+    @yield('content')
 
     @include('partials.footer')
     @include('partials.js')

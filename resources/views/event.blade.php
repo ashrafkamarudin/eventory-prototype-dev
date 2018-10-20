@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', '| Event')
+
 @section('content')
 
       <div class="row">
@@ -154,4 +156,19 @@
         </aside>
       </div>
 
+@endsection
+
+@section('script')
+<script type="text/javascript">
+$(document).ready(function() {
+    if (window.location.hash != null && window.location.hash != '') 
+        $('html, body').animate({
+          scrollTop: $(window.location.hash).offset().top
+        }, 800, function(){
+     
+          // Add hash (#) to URL when done scrolling (default click behavior)
+          //window.location.hash = hash;
+        });
+});
+</script>
 @endsection

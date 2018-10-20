@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', '| Home')
+
 @section('content')
       <div class="row" style="margin-top: -50px">
         <!-- Latest Posts -->
@@ -18,15 +20,18 @@
               <div class="card-body tags">
                 <h5 class="card-title"> {{ $event->title }} </h5>
                 <p class="card-text">
-                  Some info about the post
+                  Organized by <a href="">{{ $event->user->name }}</a> on 
+                    <a style="color: dark; font-weight: bold">
+                      {{ $event->start_at->toFormattedDateString() }} 
+                    </a> until
+                    <a style="color: dark; font-weight: bold"> 
+                      {{ $event->end_at->toFormattedDateString() }}
+                    </a>.
                 </p>
-                  <ul class="list-inline">
-                    <li class="list-inline-item"><a href="#" class="tag">#Business</a></li>
-                    <li class="list-inline-item"><a href="#" class="tag">#Technology</a></li>
-                    <li class="list-inline-item"><a href="#" class="tag">#Fashion</a></li>
-                    <li class="list-inline-item"><a href="#" class="tag">#Sports</a></li>
-                    <li class="list-inline-item"><a href="#" class="tag">#Economy</a></li>
-                  </ul>
+                <p class="card-text">
+                  Short Description about the event
+                </p>
+                  <a href="#">#Business</a> <a href="#">#Business</a> <a href="#">#Business</a> <a href="#">#Business</a> <a href="#">#Business</a>
                 <hr>
                 <a href=" {{ url('event/' . $event->slug) }} ">Read more</a>
                 <div class="d-flex pull-right">

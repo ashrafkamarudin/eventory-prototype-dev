@@ -148,6 +148,6 @@
 @endsection
 
 @section('script')
-    @include('admin.partials.libs.cke-js')
-    @include('admin.partials.libs.datepicker-js')
+    @include('admin.partials.js.cke-js')
+    @include('admin.partials.js.datepicker-js')
 @endsection

@@ -79,5 +79,5 @@
 @endsection
 
 @section('script')
-    @include('admin.partials.libs.datatables-js')
+    @include('admin.partials.js.datatables-js')
 @endsection

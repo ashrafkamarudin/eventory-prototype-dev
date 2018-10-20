@@ -269,7 +269,7 @@ class EventController extends Controller
     {
         // fetch from db based on slug
         $event = Event::where('slug', '=', $slug)->where('status', '=', 1)->firstOrFail();
-        $comments = $event->comments()->paginate(6);
+        $comments = $event->comments()->paginate(4);
         $threeRecentEvent = Event::orderBy('created_at', 'desc')->where('status', '=', 1)->take(3)->get();
         //$comment = $event->comment->paginate(15);
 
