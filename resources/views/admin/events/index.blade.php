@@ -33,7 +33,7 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Title</th>
-                                    <th>Created by</th>
+                                    <th>Start Date - End Date</th>
                                     <th>Created on</th>
                                     <th>Action</th>
                                 </tr>
@@ -43,7 +43,7 @@
                                 <tr style="font-style: {{ $event->status == 0 ? ' italic':'' }}">
                                     <td class="no">{{ $key + 1 }}</td>
                                     <td>{{ $event->title }} {{ $event->status == 0 ? ' --Draf':'' }}</td>
-                                    <td>{{ $event->user->name }}</td>
+                                    <td>{{ $event->start_at->toFormattedDateString() }} - {{ $event->end_at->toFormattedDateString() }}</td>
                                     <td>{{ $event->created_at->toFormattedDateString() }}</td>
                                     <td>
 

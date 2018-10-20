@@ -22,6 +22,8 @@ class CreateEventsTable extends Migration
             $table->string('image', 50)->nullable();
             $table->text('seo')->nullable();
             $table->string('keyword')->nullable();
+            $table->date('start_at');
+            $table->date('end_at');
             $table->tinyInteger('status', false, true)->length(2);
             $table->integer('view', false, true)->length(10)->nullable();
             $table->string('plugin')->nullable();

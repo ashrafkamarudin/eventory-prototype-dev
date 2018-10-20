@@ -7,12 +7,9 @@ return [
             'events' => 'c,r,u,d',
             'profile' => 'r,u'
         ],
-        'administrator' => [
+        'organiser' => [
             'users' => 'c,r,u',
             'events' => 'c,r,u,d',
-            'profile' => 'r,u'
-        ],
-        'user' => [
             'profile' => 'r,u'
         ],
     ],

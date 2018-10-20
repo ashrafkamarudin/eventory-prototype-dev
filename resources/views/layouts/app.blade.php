@@ -28,6 +28,9 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
   </head>
   <body>
+
+    <div class='thetop'></div>
+
     <header class="header">
       <!-- Main Navbar-->
       <nav class="navbar navbar-expand-lg">
@@ -118,6 +121,10 @@
       @yield('content')
     </main>
 
+    <div class='scrolltop'>
+        <div class='scroll icon'><i class="fa fa-4x fa-angle-up"></i></div>
+    </div>
+
     <!-- Page Footer-->
     <footer class="main-footer">
       <div class="container">
@@ -146,3 +153,26 @@
     <script src="{{ asset('bootstrap-blog/js/front.js') }}"></script>
   </body>
 </html>
+
+<script type="text/javascript">
+$(window).scroll(function() {
+    if ($(this).scrollTop() > 50 ) {
+        $('.scrolltop:hidden').stop(true, true).fadeIn();
+    } else {
+        $('.scrolltop').stop(true, true).fadeOut();
+    }
+});
+
+$(function(){$(".scroll").click(function(){$("html,body").animate({scrollTop:$(".thetop").offset().top},"1000");return false})});
+
+$(document).ready(function() {
+    if (window.location.hash != null && window.location.hash != '') 
+        $('html, body').animate({
+          scrollTop: $(window.location.hash).offset().top
+        }, 800, function(){
+     
+          // Add hash (#) to URL when done scrolling (default click behavior)
+          //window.location.hash = hash;
+        });
+});
+</script>

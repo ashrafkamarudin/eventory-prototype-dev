@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Database\Eloquent\Collection;
 
 use App\Http\Controllers\Controller;
 use App\Event;
 use App\User;
+use Carbon\Carbon;
 
 use Image;
 use Auth;
@@ -38,7 +40,6 @@ class EventController extends Controller
     public function create()
     {
         return view('admin.events.create');
-        //return View::make('admin.events.create');
     }
 
     /**
@@ -51,8 +52,10 @@ class EventController extends Controller
     {
 
         $this->validate($request, [
-            'slug' => 'required|alpha_dash|min:5|max:255|unique:events,slug'
-            ]);
+            'slug' => 'required|alpha_dash|min:5|max:255|unique:events,slug',
+            'title' => 'required|min:5|max:255',
+            'date_range' => 'required'
+        ]);
 
         $event = new Event;
 
@@ -68,17 +71,16 @@ class EventController extends Controller
             $event->image = $filename;
         }
 
-        /*
-        if (empty($request->slug)) {
-            $slug = Helper::slug('post', 'posts', null, $request->title, null, null);
-        } else {
-            $slug = Helper::slug('post', 'posts', $request->slug, null, null, 1);
-        }*/
+        $splitDate = explode(' - ', $request->date_range, 2);
+        $start_date = date('Y-m-d', strtotime($splitDate[0]));
+        $end_date = date('Y-m-d', strtotime($splitDate[1]));
 
         $event->slug = $request->slug;
         $event->title = $request->title;
         $event->user_id = Auth::user()->id;
         $event->content = $request->description;
+        $event->start_at = $start_date;
+        $event->end_at = $end_date;
         $event->status = $request->status; // published or drafts, boolean
         $event->plugin = $request->dataPlugin;
 
@@ -100,7 +102,12 @@ class EventController extends Controller
             $status = 'Draft';
         }
 
-        return redirect(route('events.index'))->with('message', 'Post ' . $status);
+        $redirectTo = 'events/drafts';
+        if ($request->status == true) {
+            $redirectTo = 'events/published';
+        }
+
+        return redirect($redirectTo)->with('message', 'Success Update');
 
     }
 
@@ -197,10 +204,16 @@ class EventController extends Controller
             $event->image = null;
         }
 
+        $splitDate = explode(' - ', $request->date_range, 2);
+        $start_date = date('Y-m-d', strtotime($splitDate[0]));
+        $end_date = date('Y-m-d', strtotime($splitDate[1]));
+
         $event->slug = $request->slug;
         $event->title = $request->title;
         $event->user_id = Auth::user()->id;
         $event->content = $request->description;
+        $event->start_at = $start_date;
+        $event->end_at = $end_date;
         $event->status = $request->status; // published or drafts, boolean
         $event->plugin = $request->dataPlugin;
         if (empty($request->seo)) {
@@ -215,7 +228,12 @@ class EventController extends Controller
         }
         $event->save();
 
-        return redirect(route('events.index'))->with('message', 'Success Update');
+        $redirectTo = 'events/drafts';
+        if ($request->status == true) {
+            $redirectTo = 'events/published';
+        }
+
+        return redirect($redirectTo)->with('message', 'Success Update');
     }
 
     /**
@@ -251,11 +269,14 @@ class EventController extends Controller
     {
         // fetch from db based on slug
         $event = Event::where('slug', '=', $slug)->where('status', '=', 1)->firstOrFail();
+        $comments = $event->comments()->paginate(6);
         $threeRecentEvent = Event::orderBy('created_at', 'desc')->where('status', '=', 1)->take(3)->get();
+        //$comment = $event->comment->paginate(15);
 
         // return the view and pass in the post object
         return view('event')
                 ->withEvent($event)
+                ->withComments($comments)
                 ->withThreeRecentEvent($threeRecentEvent);
     }
 

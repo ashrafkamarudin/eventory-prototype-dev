@@ -82,6 +82,15 @@
                                 <input type="text" class="form-control" id="slug" placeholder="Slug" name="slug" value="{{ $event->slug }}">
                                 <div class="error">{{ $errors->first('slug') }}</div>
                             </div>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text">
+                                    <i class="fa fa-calendar"></i>
+                                  </span>
+                                </div>
+                                <input type="text" class="form-control float-right" id="reservation" name="date_range" value="{{ $event->start_at->format('m/d/Y') }} - {{ $event->end_at->format('m/d/Y') }}">
+                              </div>
+                              <div class="error">{{ $errors->first('date_range') }}</div>
                             <div class="form-group {{ !empty($errors->first('description')) ? 'has-error':'' }}">
                                 <label for="editor">Content</label>
                                 <textarea id="editor" class="form-control" rows="3" placeholder="Content"
@@ -148,4 +157,5 @@
 
 @section('script')
     @include('admin.partials.libs.cke-js')
+    @include('admin.partials.libs.datepicker-js')
 @endsection

@@ -56,7 +56,9 @@ class CommentController extends Controller
         //Session::flash('success', 'Comment was added');
 
         //return redirect()->route('blog.single', [$post->slug]);
-        return redirect(route('events.single', [$event->slug]))->with('message', 'Success Post');;
+        //return redirect('events/')->with('message', 'Success Update');
+        return redirect()->route('event.single', $event->slug . '#comment')->with('message', 'Success Post');
+        //return redirect(route('events.single', $event->slug))->with('message', 'Success Post');
     }
 
     /**

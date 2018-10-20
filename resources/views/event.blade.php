@@ -4,10 +4,16 @@
 
       <div class="row">
         <!-- Latest Posts -->
-        <main class="post blog-post col-lg-8"> 
+        <main class="post blog-post col-lg-9"> 
           <div class="container">
             <div class="post-single">
-              <div class="post-thumbnail"><img src="{{ asset('media/images/' . $event->image) }}" alt="..." class="img-fluid"></div>
+              <div class="post-thumbnail">
+                @if($event->image)
+                    <img src="{{ asset('media/images/' . $event->image) }}" alt="..." class="img-fluid">
+                @else
+                    <img src="{{ asset('images/noimage.gif') }}" alt="..." class="img-fluid">
+                @endif
+              </div>
               <div class="post-details">
                 <div class="post-meta d-flex justify-content-between">
                   <div class="category"><a href="#">Business</a><a href="#">Financial</a></div>
@@ -29,11 +35,12 @@
                 <div class="post-tags"><a href="#" class="tag">#Business</a><a href="#" class="tag">#Tricks</a><a href="#" class="tag">#Financial</a><a href="#" class="tag">#Economy</a></div>
 
         
-                <div class="post-comments">
+                <div class="post-comments" id="comment">
                   <header>
                     <h3 class="h6">Post Comments<span class="no-of-comments">(3)</span></h3>
                   </header>
-                  @foreach($event->comments as $comment)
+
+                  @forelse($comments as $comment)
                     <div class="comment">
                     <div class="comment-header d-flex justify-content-between">
                       <div class="user d-flex align-items-center">
@@ -45,13 +52,24 @@
                       <p>{{ $comment->comment }}</p>
                     </div>
                   </div>
-                  @endforeach
+                  @empty
+                   <div class="comment">
+                    <div class="comment-body">
+                      <p>No Comment for this post yet.</p>
+                    </div>
+                  </div>
+                  @endforelse
+
+
+                  {{ $comments->links() }}
+
+
                 </div>
-                <div class="add-comment">
+                <div class="add-comment" id="add">
                   <header>
                     <h3 class="h6">Leave a reply</h3>
                   </header>
-                  <form method="post" action="{{ url('comments') }}" class="commenting-form">
+                  <form method="post" action="{{ url('comments#add') }}" class="commenting-form">
                     @method('POST')
                     @csrf
                     <div class="form-row">
@@ -78,7 +96,7 @@
             </div>
           </div>
         </main>
-        <aside class="col-lg-4">
+        <aside class="col-lg-3">
           <!-- Widget [Search Bar Widget]-->
           <div class="widget search bg-white">
             <header>
@@ -100,7 +118,7 @@
               @foreach($threeRecentEvent as $recentEvent)
                 <div class="item d-flex align-items-center">
                   <div class="image"><img src="{{ asset('media/thumb/' . $event->image) }}" alt="..." class="img-fluid"></div>
-                  <div class="title"><strong> {{ $recentEvent->title }}</strong>
+                  <div class="title"><strong> {{ $recentEvent->title }} </strong>
                     <div class="d-flex align-items-center">
                       <div class="views"><i class="icon-eye"></i> 500</div>
                       <div class="comments"><i class="icon-comment"></i>12</div>

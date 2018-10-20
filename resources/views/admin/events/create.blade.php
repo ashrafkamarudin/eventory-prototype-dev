@@ -53,14 +53,37 @@
                         <div class="card-body">
                             <div class="form-group {{ !empty($errors->first('title')) ? 'has-error':'' }}">
                                 <label for="title">Title</label>
-                                <input type="text" class="form-control" id="title" placeholder="Title" name="title" value="{{ old('title') }}" required>
+                                <input type="text" class="form-control" id="title" placeholder="Title" name="title" value="{{ old('title') }}" >
                                 <div class="error">{{ $errors->first('title') }}</div>
                             </div>
                             <div class="form-group {{ !empty($errors->first('slug')) ? 'has-error':'' }}">
-                                <label for="slug">Slug</label>
-                                <input type="text" class="form-control" id="slug" placeholder="Slug" name="slug" value="{{ old('slug') }}">
+                                <label for="slug">Custom Event Url</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text">
+                                        {{  url('/') }}/event/
+                                      </span>
+                                    </div>
+                                    <input type="text" class="form-control" id="slug" placeholder="my-event" name="slug" value="{{ old('slug') }}">
+                                </div>
                                 <div class="error">{{ $errors->first('slug') }}</div>
                             </div>
+                            <!-- Date range -->
+                            <div class="form-group {{ !empty($errors->first('date_range')) ? 'has-error':'' }}">
+                              <label>Date range:</label>
+
+                              <div class="input-group">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text">
+                                    <i class="fa fa-calendar"></i>
+                                  </span>
+                                </div>
+                                <input type="text" class="form-control float-right" id="reservation" name="date_range" value="{{ old('date_range') }}">
+                              </div>
+                              <div class="error">{{ $errors->first('date_range') }}</div>
+                              <!-- /.input group -->
+                            </div>
+                            <!-- /.form group -->
                             <div class="form-group {{ !empty($errors->first('description')) ? 'has-error':'' }}">
                                 <label for="editor">Content</label>
                                 <textarea id="editor" class="form-control" rows="3" placeholder="Content"
@@ -126,4 +149,5 @@
 
 @section('script')
     @include('admin.partials.libs.cke-js')
+    @include('admin.partials.libs.datepicker-js')
 @endsection
