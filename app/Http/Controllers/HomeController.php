@@ -52,17 +52,16 @@ class HomeController extends Controller
     {   
         // get all published event and 3 recent published event
         $UpcomingEvents = Event::where('status', '=', 1)
-                            ->whereDate('start_at', '<', Carbon::now())
+                            ->whereDate('start_at', '<=', Carbon::today()->toDateString())
                             ->whereDate('end_at', '>', Carbon::now())
-                            ->orderBy('start_at', 'ASC')
                             ->paginate(15);
 
 
-        $UpcomingEvents = Event::where('status', '=', 1)->whereDate('start_at', '<', Carbon::now())->orderBy('start_at', 'ASC')->paginate(15);
+        //$UpcomingEvents = Event::where('status', '=', 1)->whereDate('start_at', '<', Carbon::now())->orderBy('start_at', 'ASC')->paginate(15);
 
         $threeRecentEvent = Event::orderBy('created_at', 'desc')->where('status', '=', 1)->take(3)->get();
 
-        return view('upcoming')
+        return view('happening-now')
                 ->withEvents($UpcomingEvents)
                 ->withThreeRecentEvent($threeRecentEvent);
     }

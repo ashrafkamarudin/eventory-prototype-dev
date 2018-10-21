@@ -15,13 +15,14 @@
 - [ ] Dashboard
 	- [ ] 
 
-- [ ] Manage Event [Admin]
+- [ ] Manage Event [superadmin / organiser]
 	- [x] Create, Read, Update, Delete
-		- [ ] must add daterange
+		- [x] must add daterange
 	- [x] slugs
 	- [x] published and drafts
 	- [ ] tags
 	- [ ] categories
+	- [ ] manage all event by admin.
 	
 
 - [ ] Manage Users
@@ -36,8 +37,8 @@
 
 - [ ] Reporting
 
-- [ ] Homepage
-	- [ ] not yet
+- [x] Homepage - need to edit interface
+	- [x] view 3 upcoming event. [optional : add featured event]
 
 - [ ] Event
 	- [x] view single event with slug
@@ -45,7 +46,7 @@
 		- [x] upcoming
 	- [ ] view list of all event
 		- [x] sort event by start date, ascending [upcoming event]
-		- [ ] happening now
+		- [x] happening now
 
 - [ ] About Us
 - [ ] Contact Us

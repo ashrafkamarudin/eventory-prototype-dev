@@ -7,7 +7,7 @@
         <!-- Latest Posts -->
         <main class="post blog-post col-lg-9"> 
           <div class="container">
-            <h5>Upcoming Event</h5>
+            <h5>Event Happening Now</h5>
             <hr>
 
             @forelse ($events as $event)
@@ -35,7 +35,7 @@
                 <hr>
                 <a href=" {{ url('event/' . $event->slug) }} ">Read more</a>
                 <div class="d-flex pull-right">
-                      <div>Event starts in {{ $event->start_at->diffForHumans() }}</div>
+                      <div>Event ends in {{ $event->end_at->diffForHumans() }}</div>
                 </div>
               </div>
             </div><br>
