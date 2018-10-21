@@ -30,7 +30,7 @@
                         <!-- Authentication Links -->
                         <li class="nav-item"><a href="{{ route('home') }}" class="nav-link {{ Request::is('/') ? 'active' : '' }}">Home</a>
                         </li>
-                        <li class="nav-item"><a href="{{ route('home') }}" class="nav-link {{ Request::is('event/*') ? 'active' : '' }} ">Post</a>
+                        <li class="nav-item"><a href="{{ route('upcoming') }}" class="nav-link {{ Request::is('event/*') ? 'active' : '' }} ">Events</a>
                         </li>
                         <li class="nav-item"><a href="{{ route('about-us') }}" class="nav-link {{ Request::is('about-us') ? 'active' : '' }}">About</a>
                         </li>

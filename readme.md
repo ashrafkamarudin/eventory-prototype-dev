@@ -22,6 +22,7 @@
 	- [x] published and drafts
 	- [ ] tags
 	- [ ] categories
+	
 
 - [ ] Manage Users
 	- [x] Create, Read, Update
@@ -36,21 +37,21 @@
 - [ ] Reporting
 
 - [ ] Homepage
-	- [ ] featured event
-	- [x] list recent event
-		- [ ] sort event by start date, ascending
+	- [ ] not yet
 
-- [ ] Post
+- [ ] Event
 	- [x] view single event with slug
 		- [x] comments
+		- [x] upcoming
 	- [ ] view list of all event
-		- [ ] sort event by start date, ascending
+		- [x] sort event by start date, ascending [upcoming event]
+		- [ ] happening now
 
 - [ ] About Us
 - [ ] Contact Us
 - [ ] Privacy Policy
 - [ ] error page
-	- 404 page not fount
+	- 404 page not found
 	- 500 internal server error
 	- 503 no permission
 

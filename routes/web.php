@@ -11,6 +11,7 @@
 |
 */
 
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/about-us', function () {
     return view('aboutus');
@@ -24,19 +25,18 @@ Route::get('/privacy-policy', function () {
     return view('privacy-policy');
 })->name('privacy-policy');
 
-Route::get('/', 'HomeController@index')->name('home');
-//Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('comments', 'CommentController');
-Auth::routes();
-
-Route::get('event/{slug}', ['as' => 'event.single', 'uses' => 'Admin\EventController@getSingle'])
+// event
+Route::get('/event/upcoming', 'HomeController@upcoming')->name('upcoming');
+Route::get('/event/happening', 'HomeController@happening')->name('happening');
+Route::get('/event/{slug}', ['as' => 'event.single', 'uses' => 'Admin\EventController@getSingle'])
 	->where('slug', '[\w\d\-\_]+'); // regular expression
 
-//Route::prefix('manage')->middleware('role:superadministrator|administrator|editor|author|contributor')->group(function () {
+Auth::routes();
+
 Route::group(['middleware' => 'auth'], function () {
 
 	// SuperAdministrator and Administrator
-	Route::group(['middleware' => ['role:superadministrator|administrator']], function() {
+	Route::group(['middleware' => ['role:superadministrator|organiser']], function() {
 
 		// dashboard route
 		Route::get('users/list', 'Admin\UserController@index');
@@ -60,7 +60,7 @@ Route::group(['middleware' => 'auth'], function () {
 	});
 
 	// Administrator / organiser
-	Route::group(['middleware' => ['role:administrator']], function() {
+	Route::group(['middleware' => ['role:organiser']], function() {
 	    //Route::get('/manage', ['middleware' => ['permission:manage-admins'], 'uses' => 'AdminController@manageAdmins']);
 	});
 
