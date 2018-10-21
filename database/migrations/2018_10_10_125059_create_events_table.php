@@ -29,6 +29,10 @@ class CreateEventsTable extends Migration
             $table->string('plugin')->nullable();
             $table->timestamps();
         });
+
+        Schema::table('events', function ($table){
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+        });
     }
 
     /**
