@@ -4,7 +4,7 @@
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title> {{ config('app.name', 'Laravel') }} | About Us </title>
+    <title> {{ config('app.name', 'Laravel') }} | Home </title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
@@ -35,7 +35,7 @@
         <div class="row">
           <div class="col-lg-8">
             <h2 class="h3">We work for you !</h2>
-            <p class="text-big">We at <a href="#">{{ config('app.name', 'Laravel') }}</a> <strong>provides you a platform</strong> for you here <strong>so you don't miss out on Special Event's happening around you !</strong>. You cna also find out more details about these events like the durations, organiser and venue. Come and check these events now.</p>
+            <p class="text-big">We at <a href="#">{{ config('app.name', 'Laravel') }}</a> <strong>provides you a platform</strong> that gather events in one place <strong>so you don't miss out on Special Event's happening around you !</strong>. You can also find out more details like the durations, organiser and venue about the events here. Come and check these events now !</p>
           </div>
         </div>
       </div>
