@@ -17,14 +17,13 @@
     @include('partials.header')
 
         <!-- Hero Section-->
-    <section style="background: url({{ asset('bootstrap-blog/img/hero.jpg') }}); background-size: cover; background-position: center center" class="hero">
+    <section style="background-color: gray;background-size: cover; background-position: center center" class="hero">
       <div class="container">
         <div class="row">
-          <div class="col-lg-7">
-            <h3><i>WE GATHER</i></h3>
-            <h1>Event's happening near you !</h1>
-            <h2><i>Specially for you.</i></h2>
-            <a href="#" class="hero-link">Discover More</a>
+          <div class="col-lg-12" align="center">
+            <br><br><br>
+            <h1 style="font-family: helvetica neue; font-weight: bolder"><i>Lepak !</i></h1>
+            <h3 style="font-family: helvetica neue; font-weight: lighter">A Bucket that contains all the fun you need</h3>
           </div>
         </div><a href=".intro" class="continue link-scroll"><i class="fa fa-long-arrow-down"></i> Scroll Down</a>
       </div>
@@ -34,8 +33,8 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8">
-            <h2 class="h3">We work for you !</h2>
-            <p class="text-big">We at <a href="#">{{ config('app.name', 'Laravel') }}</a> <strong>provides you a platform</strong> that gather events in one place <strong>so you don't miss out on Special Event's happening around you !</strong>. You can also find out more details like the durations, organiser and venue about the events here. Come and check these events now !</p>
+            <h2 class="h3"><i>Missing out on great Events ?</i></h2>
+            <p class="text-big">Well Now you don't have to worry ! Just visit us and see all the exciting events we have to offer !</p>
           </div>
         </div>
       </div>

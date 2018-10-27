@@ -8,7 +8,6 @@ return [
             'profile' => 'r,u'
         ],
         'organiser' => [
-            'users' => 'c,r,u',
             'events' => 'c,r,u,d',
             'profile' => 'r,u'
         ],
