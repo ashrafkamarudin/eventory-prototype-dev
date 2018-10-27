@@ -17,6 +17,10 @@ Route::get('/about-us', function () {
     return view('aboutus');
 })->name('about-us');
 
+Route::get('/search', function () {
+    return view('search');
+})->name('search');
+
 Route::get('/contact-us', function () {
     return view('contactus');
 })->name('contact-us');

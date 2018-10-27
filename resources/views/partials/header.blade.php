@@ -32,7 +32,7 @@
                         </li>
                         <li class="nav-item"><a href="{{ route('upcoming') }}" class="nav-link {{ Request::is('event/*') ? 'active' : '' }} ">Events</a>
                         </li>
-                        <li class="nav-item"><a href="{{ route('contact-us') }}" class="nav-link {{ Request::is('contact-us') ? 'active' : '' }}">Search</a>
+                        <li class="nav-item"><a href="{{ route('search') }}" class="nav-link {{ Request::is('search') ? 'active' : '' }}">Search</a>
                         </li>
 
                         <div class="navbar-text"><a href="#" class="search-btn"></a></div>

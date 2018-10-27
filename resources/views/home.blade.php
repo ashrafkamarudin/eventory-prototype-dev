@@ -23,7 +23,7 @@
           <div class="col-lg-12" align="center">
             <br><br><br>
             <h1 style="font-family: helvetica neue; font-weight: bolder"><i>Lepak !</i></h1>
-            <h3 style="font-family: helvetica neue; font-weight: lighter">A Bucket that contains all the fun you need</h3>
+            <h3 style="font-family: helvetica neue; font-weight: lighter">A bucket that contains all the fun you need</h3>
           </div>
         </div><a href=".intro" class="continue link-scroll"><i class="fa fa-long-arrow-down"></i> Scroll Down</a>
       </div>
